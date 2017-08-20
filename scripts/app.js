@@ -19,17 +19,16 @@
      ****************************************************************************/
 
     document.getElementById('butRefresh').addEventListener('click', function () {
-        // Refresh all of the forecasts
+// Refresh all of the forecasts
         app.updateSchedules();
     });
 
     document.getElementById('butAdd').addEventListener('click', function () {
-        // Open/show the add new city dialog
+// Open/show the add new city dialog
         app.toggleAddDialog(true);
     });
 
     document.getElementById('butAddCity').addEventListener('click', function () {
-
 
         var select = document.getElementById('selectTimetableToAdd');
         var selected = select.options[select.selectedIndex];
@@ -40,11 +39,12 @@
         }
         app.getSchedule(key, label);
         app.selectedTimetables.push({key: key, label: label});
+        app.saveSelectedTimetables();
         app.toggleAddDialog(false);
     });
 
     document.getElementById('butAddCancel').addEventListener('click', function () {
-        // Close the add new city dialog
+// Close the add new city dialog
         app.toggleAddDialog(false);
     });
 
@@ -55,7 +55,7 @@
      *
      ****************************************************************************/
 
-    // Toggles the visibility of the add new city dialog.
+// Toggles the visibility of the add new city dialog.
     app.toggleAddDialog = function (visible) {
         if (visible) {
             app.addDialog.classList.add('dialog-container--visible');
@@ -64,8 +64,8 @@
         }
     };
 
-    // Updates a weather card with the latest weather forecast. If the card
-    // doesn't already exist, it's cloned from the template.
+// Updates a weather card with the latest weather forecast. If the card
+// doesn't already exist, it's cloned from the template.
 
     app.updateTimetableCard = function (data) {
         var key = data.key;
@@ -88,10 +88,10 @@
         card.querySelector('.card-last-updated').textContent = data.created;
 
         var scheduleUIs = card.querySelectorAll('.schedule');
-        for(var i = 0; i<4; i++) {
+        for (var i = 0; i < 4; i++) {
             var schedule = schedules[i];
             var scheduleUI = scheduleUIs[i];
-            if(schedule && scheduleUI) {
+            if (schedule && scheduleUI) {
                 scheduleUI.querySelector('.message').textContent = schedule.message;
             }
         }
@@ -102,6 +102,7 @@
             app.isLoading = false;
         }
     };
+
 
     /*****************************************************************************
      *
@@ -126,7 +127,7 @@
                     app.updateTimetableCard(result);
                 }
             } else {
-                // Return the initial weather forecast since no data is available.
+// Return the initial weather forecast since no data is available.
                 app.updateTimetableCard(initialStationTimetable);
             }
         };
@@ -134,12 +135,19 @@
         request.send();
     };
 
-    // Iterate all of the cards and attempt to get the latest forecast data
+// Iterate all of the cards and attempt to get the latest forecast data
     app.updateSchedules = function () {
         var keys = Object.keys(app.visibleCards);
         keys.forEach(function (key) {
             app.getSchedule(key);
         });
+    };
+
+// TODO add saveSelectedTimetables function here
+// Save list of cities to localStorage.
+    app.saveSelectedTimetables = function () {
+        var selectedTimetables = JSON.stringify(app.selectedTimetables);
+        localStorage.selectedTimetables = selectedTimetables;
     };
 
     /*
@@ -180,8 +188,17 @@
      *   SimpleDB (https://gist.github.com/inexorabletash/c8069c042b734519680c)
      ************************************************************************/
 
-    app.getSchedule('metros/1/bastille/A', 'Bastille, Direction La Défense');
-    app.selectedTimetables = [
-        {key: initialStationTimetable.key, label: initialStationTimetable.label}
-    ];
+    app.selectedTimetables = localStorage.selectedTimetables;
+    if (app.selectedTimetables) {
+        app.selectedTimetables = JSON.parse(app.selectedTimetables);
+        app.selectedTimetables.forEach(function (city) {
+            app.getSchedule(city.key, city.label);
+        });
+    } else {
+        app.getSchedule('metros/1/bastille/A', 'Bastille, Direction La Défense');
+        app.selectedTimetables = [
+            {key: initialStationTimetable.key, label: initialStationTimetable.label}
+        ];
+        app.saveSelectedTimetables();
+    }
 })();
