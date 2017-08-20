@@ -187,7 +187,14 @@
      *   Instead, check out IDB (https://www.npmjs.com/package/idb) or
      *   SimpleDB (https://gist.github.com/inexorabletash/c8069c042b734519680c)
      ************************************************************************/
+console.log('aaaaaaaaaaaa');
 
+
+asyncStorage.setItem('hello', 'world');
+asyncStorage.setItem('foo', 'bar');
+
+
+console.log('bbbbbbbbbbbb');
     app.selectedTimetables = localStorage.selectedTimetables;
     if (app.selectedTimetables) {
         app.selectedTimetables = JSON.parse(app.selectedTimetables);
