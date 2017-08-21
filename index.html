@@ -38,6 +38,16 @@
 </head>
 <body>
 
+
+
+
+
+
+
+
+
+
+
   <header class="header">
     <h1 class="header__title">Paris Métro 1</h1>
     <button id="butRefresh" class="headerButton" aria-label="Refresh"></button>
@@ -45,6 +55,37 @@
   </header>
 
   <main class="main">
+
+  <button id="set">Set</button>
+  <button id="get">Get</button>
+  <p id="log"></p>
+  <script>
+    const KEY = 'example-key';
+    var VALUE = '';
+
+    function log(message) {
+      document.querySelector('#log').innerText = message;
+    }
+
+    async function get() {
+      return await idbKeyval.get(KEY);
+    }
+
+    async function set() {
+      VALUE = 'example-value ' + new Date();
+      await idbKeyval.set(KEY, VALUE);
+    }
+
+    document.querySelector('#set').addEventListener('click', async () => {
+      await set();
+      log(`Key ${KEY} was saved with value ${VALUE}.`);
+    });
+
+    document.querySelector('#get').addEventListener('click', async () => {
+      const value = await get();
+      log(`Key ${KEY} was read with value ${value}.`);
+    });
+  </script>
 
     <div class="card cardTemplate" hidden>
       <div class="line-key" hidden></div>
