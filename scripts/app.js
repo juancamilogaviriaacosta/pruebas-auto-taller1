@@ -143,11 +143,11 @@
         });
     };
 
-// TODO add saveSelectedTimetables function here
-// Save list of cities to localStorage.
     app.saveSelectedTimetables = function () {
         var selectedTimetables = JSON.stringify(app.selectedTimetables);
-        localStorage.selectedTimetables = selectedTimetables;
+        console.log('guardando11111 ' + selectedTimetables);
+        idbKeyval.set('selectedTimetables', selectedTimetables);
+        console.log(idbKeyval.get('selectedTimetables'));
     };
 
     /*
@@ -176,7 +176,6 @@
 
     };
 
-
     /************************************************************************
      *
      * Code required to start the app
@@ -187,15 +186,10 @@
      *   Instead, check out IDB (https://www.npmjs.com/package/idb) or
      *   SimpleDB (https://gist.github.com/inexorabletash/c8069c042b734519680c)
      ************************************************************************/
-console.log('aaaaaaaaaaaa');
 
-
-asyncStorage.setItem('hello', 'world');
-asyncStorage.setItem('foo', 'bar');
-
-
-console.log('bbbbbbbbbbbb');
-    app.selectedTimetables = localStorage.selectedTimetables;
+    console.log('cargando2222222222 ' + app.selectedTimetables)
+    app.selectedTimetables = idbKeyval.get('selectedTimetables').PromiseValue;
+    console.log(app.selectedTimetables)
     if (app.selectedTimetables) {
         app.selectedTimetables = JSON.parse(app.selectedTimetables);
         app.selectedTimetables.forEach(function (city) {

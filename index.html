@@ -34,13 +34,14 @@
   <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
   <meta name="msapplication-TileColor" content="#2F3BA2">
   <meta name="theme-color" content="#317EFB"/>
+  <script src="scripts/idb-keyval.js"></script>
 </head>
 <body>
 
   <header class="header">
     <h1 class="header__title">Paris Métro 1</h1>
     <button id="butRefresh" class="headerButton" aria-label="Refresh"></button>
-    <button id="butAdd" class="headerButton" aria-label="Add"></button>
+    <button id="butAdd" class="headerButton" idb-keyval.jsaria-label="Add"></button>
   </header>
 
   <main class="main">
@@ -101,7 +102,6 @@
   </div>
 
   <!-- Uncomment the line below when ready to test with fake data -->
-  <script src="scripts/async_storage.js"></script>
   <script src="scripts/app.js" async></script>
 </body>
 </html>

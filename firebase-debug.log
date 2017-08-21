@@ -1,0 +1,74 @@
+[debug] [2017-08-20T23:13:24.501Z] ----------------------------------------------------------------------
+[debug] [2017-08-20T23:13:24.508Z] Command:       /usr/bin/nodejs /usr/bin/firebase deploy --debug
+[debug] [2017-08-20T23:13:24.509Z] CLI Version:   3.9.2
+[debug] [2017-08-20T23:13:24.510Z] Platform:      linux
+[debug] [2017-08-20T23:13:24.510Z] Node Version:  v7.10.1
+[debug] [2017-08-20T23:13:24.510Z] Time:          Sun Aug 20 2017 18:13:24 GMT-0500 (COT)
+[debug] [2017-08-20T23:13:24.510Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-08-20T23:13:24.526Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-08-20T23:13:24.526Z] > authorizing via signed-in user
+[debug] [2017-08-20T23:13:24.532Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/pruebas-auto-taller1  
+ Sun Aug 20 2017 18:13:24 GMT-0500 (COT)
+[debug] [2017-08-20T23:13:40.136Z] <<< HTTP RESPONSE 200
+[debug] [2017-08-20T23:13:40.138Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/pruebas-auto-taller1/tokens  
+ Sun Aug 20 2017 18:13:40 GMT-0500 (COT)
+[debug] [2017-08-20T23:13:55.638Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'pruebas-auto-taller1'...
+[info] 
+[info] i  deploying hosting
+[info] i  hosting: preparing public directory for upload...
+[debug] [2017-08-20T23:14:31.735Z] TypeError: no files or directories specified
+    at Object.module.exports (/usr/lib/node_modules/firebase-tools/node_modules/tar/lib/create.js:19:11)
+    at module.exports (/usr/lib/node_modules/firebase-tools/lib/prepareUpload.js:21:14)
+    at module.exports (/usr/lib/node_modules/firebase-tools/lib/deploy/hosting/deploy.js:23:10)
+    at _chain (/usr/lib/node_modules/firebase-tools/lib/deploy/index.js:21:45)
+    at /usr/lib/node_modules/firebase-tools/lib/deploy/index.js:71:12
+    at tryCatch (/usr/lib/node_modules/firebase-tools/node_modules/rsvp/dist/rsvp.js:525:12)
+    at invokeCallback (/usr/lib/node_modules/firebase-tools/node_modules/rsvp/dist/rsvp.js:538:13)
+    at /usr/lib/node_modules/firebase-tools/node_modules/rsvp/dist/rsvp.js:606:14
+    at flush (/usr/lib/node_modules/firebase-tools/node_modules/rsvp/dist/rsvp.js:2415:5)
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2017-08-20T23:16:23.428Z] ----------------------------------------------------------------------
+[debug] [2017-08-20T23:16:23.433Z] Command:       /usr/bin/nodejs /usr/bin/firebase deploy --debug
+[debug] [2017-08-20T23:16:23.434Z] CLI Version:   3.9.2
+[debug] [2017-08-20T23:16:23.435Z] Platform:      linux
+[debug] [2017-08-20T23:16:23.435Z] Node Version:  v7.10.1
+[debug] [2017-08-20T23:16:23.435Z] Time:          Sun Aug 20 2017 18:16:23 GMT-0500 (COT)
+[debug] [2017-08-20T23:16:23.435Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-08-20T23:16:23.456Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-08-20T23:16:23.456Z] > authorizing via signed-in user
+[debug] [2017-08-20T23:16:23.461Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/pruebas-auto-taller1  
+ Sun Aug 20 2017 18:16:23 GMT-0500 (COT)
+[debug] [2017-08-20T23:16:39.322Z] <<< HTTP RESPONSE 200
+[debug] [2017-08-20T23:16:39.324Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/pruebas-auto-taller1/tokens  
+ Sun Aug 20 2017 18:16:39 GMT-0500 (COT)
+[debug] [2017-08-20T23:16:55.491Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'pruebas-auto-taller1'...
+[info] 
+[info] i  deploying hosting
+[info] i  hosting: preparing . directory for upload...
+[debug] [2017-08-20T23:17:26.584Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/pruebas-auto-taller1/uploads/-Ks0vwn6Csj4VVwGjnU4?fileCount=112&message=  
+ Sun Aug 20 2017 18:17:26 GMT-0500 (COT)
+[debug] [2017-08-20T23:17:33.282Z] <<< HTTP RESPONSE 200
+[debug] [2017-08-20T23:17:33.283Z] [hosting] .tgz uploaded successfully, waiting for extraction
+[info] ✔  hosting: 112 files uploaded successfully
+[info] i  starting release process (may take several minutes)...
+[debug] [2017-08-20T23:17:53.559Z] >>> HTTP REQUEST POST https://deploy.firebase.com/v1/projects/pruebas-auto-taller1/releases { hosting: 
+   { public: '.',
+     ignore: [ 'firebase.json', '**/.*', '**/node_modules/**' ],
+     version: '-Ks0vwn6Csj4VVwGjnU4',
+     prefix: '-Ks0vwn6Csj4VVwGjnU4/',
+     manifest: [] } } 
+ Sun Aug 20 2017 18:17:53 GMT-0500 (COT)
+[debug] [2017-08-20T23:17:59.387Z] <<< HTTP RESPONSE 200
+[info] 
+[info] ✔  Deploy complete!
+[info] 
+[info] Project Console: https://console.firebase.google.com/project/pruebas-auto-taller1/overview
+[info] Hosting URL: https://pruebas-auto-taller1.firebaseapp.com
