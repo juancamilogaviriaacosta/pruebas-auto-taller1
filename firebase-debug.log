@@ -72,3 +72,51 @@
 [info] 
 [info] Project Console: https://console.firebase.google.com/project/pruebas-auto-taller1/overview
 [info] Hosting URL: https://pruebas-auto-taller1.firebaseapp.com
+[debug] [2017-08-21T04:32:28.114Z] ----------------------------------------------------------------------
+[debug] [2017-08-21T04:32:28.119Z] Command:       /usr/bin/nodejs /usr/bin/firebase deploy --debug
+[debug] [2017-08-21T04:32:28.120Z] CLI Version:   3.9.2
+[debug] [2017-08-21T04:32:28.120Z] Platform:      linux
+[debug] [2017-08-21T04:32:28.120Z] Node Version:  v7.10.1
+[debug] [2017-08-21T04:32:28.120Z] Time:          Sun Aug 20 2017 23:32:28 GMT-0500 (COT)
+[debug] [2017-08-21T04:32:28.121Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-08-21T04:32:28.136Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-08-21T04:32:28.136Z] > authorizing via signed-in user
+[debug] [2017-08-21T04:32:28.139Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-08-21T04:32:28.140Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/-3U-pXUZqWREhtnr_g-n1UfGJSCARtNQ-dvmI2cgsFI',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Sun Aug 20 2017 23:32:28 GMT-0500 (COT)
+[debug] [2017-08-21T04:32:43.405Z] <<< HTTP RESPONSE 200
+[debug] [2017-08-21T04:32:43.411Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/pruebas-auto-taller1  
+ Sun Aug 20 2017 23:32:43 GMT-0500 (COT)
+[debug] [2017-08-21T04:32:58.977Z] <<< HTTP RESPONSE 200
+[debug] [2017-08-21T04:32:58.981Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/pruebas-auto-taller1/tokens  
+ Sun Aug 20 2017 23:32:58 GMT-0500 (COT)
+[debug] [2017-08-21T04:33:14.858Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'pruebas-auto-taller1'...
+[info] 
+[info] i  deploying hosting
+[info] i  hosting: preparing . directory for upload...
+[debug] [2017-08-21T04:33:36.086Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/pruebas-auto-taller1/uploads/-Ks23J06Zw_t0mTD_2On?fileCount=138&message=  
+ Sun Aug 20 2017 23:33:36 GMT-0500 (COT)
+[debug] [2017-08-21T04:33:43.550Z] <<< HTTP RESPONSE 200
+[debug] [2017-08-21T04:33:43.550Z] [hosting] .tgz uploaded successfully, waiting for extraction
+[info] ✔  hosting: 138 files uploaded successfully
+[info] i  starting release process (may take several minutes)...
+[debug] [2017-08-21T04:34:02.177Z] >>> HTTP REQUEST POST https://deploy.firebase.com/v1/projects/pruebas-auto-taller1/releases { hosting: 
+   { public: '.',
+     ignore: [ 'firebase.json', '**/.*', '**/node_modules/**' ],
+     version: '-Ks23J06Zw_t0mTD_2On',
+     prefix: '-Ks23J06Zw_t0mTD_2On/',
+     manifest: [] } } 
+ Sun Aug 20 2017 23:34:02 GMT-0500 (COT)
+[debug] [2017-08-21T04:34:07.901Z] <<< HTTP RESPONSE 200
+[info] 
+[info] ✔  Deploy complete!
+[info] 
+[info] Project Console: https://console.firebase.google.com/project/pruebas-auto-taller1/overview
+[info] Hosting URL: https://pruebas-auto-taller1.firebaseapp.com
