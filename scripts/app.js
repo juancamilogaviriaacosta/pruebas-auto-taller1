@@ -145,9 +145,7 @@
 
     app.saveSelectedTimetables = function () {
         var selectedTimetables = JSON.stringify(app.selectedTimetables);
-        console.log('guardando11111 ' + selectedTimetables);
-        idbKeyval.set('selectedTimetables', selectedTimetables);
-        console.log(idbKeyval.get('selectedTimetables'));
+        setIndexedDb('selectedTimetables', selectedTimetables);
     };
 
     /*
@@ -187,10 +185,9 @@
      *   SimpleDB (https://gist.github.com/inexorabletash/c8069c042b734519680c)
      ************************************************************************/
 
-    console.log('cargando2222222222 ' + app.selectedTimetables)
-    app.selectedTimetables = idbKeyval.get('selectedTimetables').PromiseValue;
-    console.log(app.selectedTimetables)
-    if (app.selectedTimetables) {
+    const value = getIndexedDb('selectedTimetables');
+    console.log(value);
+    if (value.PromiseValue!=undefined) {
         app.selectedTimetables = JSON.parse(app.selectedTimetables);
         app.selectedTimetables.forEach(function (city) {
             app.getSchedule(city.key, city.label);
@@ -202,7 +199,6 @@
         ];
         app.saveSelectedTimetables();
     }
-
 
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker
