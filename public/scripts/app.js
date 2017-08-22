@@ -146,6 +146,7 @@
     app.saveSelectedTimetables = function () {
         var selectedTimetables = JSON.stringify(app.selectedTimetables);
         setIndexedDb('selectedTimetables', selectedTimetables);
+        //console.log(getIndexedDb('selectedTimetables'));
     };
 
     /*
@@ -185,20 +186,22 @@
      *   SimpleDB (https://gist.github.com/inexorabletash/c8069c042b734519680c)
      ************************************************************************/
 
-    const value = getIndexedDb('selectedTimetables');
-    console.log(value);
-    if (value.PromiseValue!=undefined) {
-        app.selectedTimetables = JSON.parse(app.selectedTimetables);
-        app.selectedTimetables.forEach(function (city) {
-            app.getSchedule(city.key, city.label);
-        });
-    } else {
-        app.getSchedule('metros/1/bastille/A', 'Bastille, Direction La Défense');
-        app.selectedTimetables = [
-            {key: initialStationTimetable.key, label: initialStationTimetable.label}
-        ];
-        app.saveSelectedTimetables();
-    }
+    getIndexedDb('selectedTimetables').then(value => {
+        console.log(value);
+        if (value) {
+            app.selectedTimetables = JSON.parse(value);
+            app.selectedTimetables.forEach(function (city) {
+                app.getSchedule(city.key, city.label);
+            });
+        } else {
+            app.getSchedule('metros/1/bastille/A', 'Bastille, Direction La Défense');
+            app.selectedTimetables = [
+                {key: initialStationTimetable.key, label: initialStationTimetable.label}
+            ];
+            app.saveSelectedTimetables();
+        }
+    });
+    
 
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker
